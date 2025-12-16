@@ -101,6 +101,29 @@ public class WordBankService
             "Second Death", "Tree of Life", "River of Life", "No More Tears", "No More Death", "New Heaven",
             "New Earth", "Holy City", "Pearly Gates", "Streets of Gold", "Jasper", "Crystal", "Glory of God",
             "Marriage Supper", "Bride of Christ"
+        },
+        ["Broadway Musicals"] = new()
+        {
+            "Hamilton", "Alexander Hamilton", "Burr", "Eliza", "Angelica", "My Shot", "Ten Duel Commandments",
+            "Phantom of the Opera", "Christine", "Raoul", "Music of the Night", "Masquerade", "Chandelier",
+            "Lion King", "Simba", "Nala", "Mufasa", "Scar", "Circle of Life", "Hakuna Matata",
+            "Wicked", "Elphaba", "Glinda", "Defying Gravity", "Popular", "Emerald City", "Flying Monkeys",
+            "Les Misérables", "Jean Valjean", "Javert", "Cosette", "Marius", "Eponine", "One Day More", "I Dreamed a Dream",
+            "Chicago", "Roxie Hart", "Velma Kelly", "Billy Flynn", "Cell Block Tango", "All That Jazz", "Razzle Dazzle",
+            "Cats", "Grizabella", "Memory", "Jellicle Cats", "Mr. Mistoffelees", "Rum Tum Tugger",
+            "West Side Story", "Maria", "Tony", "Bernardo", "Tonight", "America", "Somewhere", "Jets", "Sharks",
+            "Sound of Music", "Maria von Trapp", "Captain", "Do-Re-Mi", "Edelweiss", "My Favorite Things", "Climb Every Mountain",
+            "Fiddler on the Roof", "Tevye", "Golde", "Sunrise Sunset", "If I Were a Rich Man", "Matchmaker", "Tradition",
+            "My Fair Lady", "Eliza Doolittle", "Henry Higgins", "The Rain in Spain", "I Could Have Danced All Night",
+            "Rent", "Mimi", "Roger", "Mark", "Angel", "Seasons of Love", "La Vie Bohème", "No Day But Today",
+            "A Chorus Line", "What I Did for Love", "One", "Dance Ten Looks Three", "I Hope I Get It",
+            "Avenue Q", "Princeton", "Kate Monster", "Purpose", "Everyone's a Little Bit Racist", "For Now",
+            "Dear Evan Hansen", "Evan Hansen", "Waving Through a Window", "You Will Be Found", "Sincerely Me",
+            "Come From Away", "Gander", "Newfoundland", "Welcome to the Rock", "Me and the Sky",
+            "Book of Mormon", "Elder Price", "Elder Cunningham", "Hello", "I Believe", "Turn It Off",
+            "Mamma Mia", "Dancing Queen", "ABBA", "Take a Chance on Me", "The Winner Takes It All",
+            "Jersey Boys", "Frankie Valli", "Four Seasons", "Sherry", "Big Girls Don't Cry", "Can't Take My Eyes Off You",
+            "Kinky Boots", "Charlie Price", "Lola", "Raise You Up", "Sex Is in the Heel", "Land of Lola"
         }
     };
 
