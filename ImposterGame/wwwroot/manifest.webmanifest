@@ -1,13 +1,13 @@
 {
-  "name": "Aspire Imposter Game",
+  "name": "Imposter Game",
   "short_name": "Imposter",
-  "description": "A fun multiplayer imposter game built with .NET 10 Aspire",
+  "description": "A fun multiplayer imposter game - find the imposter before it's too late!",
   "id": "./",
   "start_url": "./",
   "display": "standalone",
   "orientation": "portrait",
-  "background_color": "#1a1a2e",
-  "theme_color": "#16213e",
+  "background_color": "#667eea",
+  "theme_color": "#667eea",
   "prefer_related_applications": false,
   "icons": [
     {
