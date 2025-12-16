@@ -11,7 +11,7 @@ public class WordBankService
             "Protocol", "Query", "Router", "Server", "Terminal", "URL", "Virtual Machine", "Wireless",
             "XML", "Compiler", "API", "Framework", "Repository", "Cache", "Docker", "Azure", "Python",
             "React", "Angular", "TypeScript", "HTML", "CSS", "SQL", "NoSQL", "Git", "GitHub", "DevOps",
-            "Agile", "Sprint", "Scrum", "CI/CD", "Deployment", "Container", "Kubernetes", "Terraform",
+            "Agile", "Sprint", "Scrum", "CI/CD", "Deployment", "Container", "GraphQL", "Terraform",
             "Jenkins", "Redis", "MongoDB"
         },
         ["Animals"] = new()
