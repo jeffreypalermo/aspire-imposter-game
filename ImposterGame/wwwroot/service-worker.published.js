@@ -25,6 +25,9 @@ async function onInstall(event) {
         .filter(asset => !offlineAssetsExclude.some(pattern => pattern.test(asset.url)))
         .map(asset => new Request(asset.url, { integrity: asset.hash, cache: 'no-cache' }));
     await caches.open(cacheName).then(cache => cache.addAll(assetsRequests));
+    
+    // Activate immediately
+    self.skipWaiting();
 }
 
 async function onActivate(event) {
@@ -35,6 +38,9 @@ async function onActivate(event) {
     await Promise.all(cacheKeys
         .filter(key => key.startsWith(cacheNamePrefix) && key !== cacheName)
         .map(key => caches.delete(key)));
+    
+    // Take control of all clients immediately
+    self.clients.claim();
 }
 
 async function onFetch(event) {
@@ -51,5 +57,43 @@ async function onFetch(event) {
         cachedResponse = await cache.match(request);
     }
 
-    return cachedResponse || fetch(event.request);
+    // Cache-first strategy: return cached response if available, otherwise try network
+    // For offline-only mode, we prioritize cache and gracefully handle network failures
+    if (cachedResponse) {
+        return cachedResponse;
+    }
+
+    // If not in cache, try network but don't fail if offline
+    try {
+        const networkResponse = await fetch(event.request);
+        
+        // Cache successful responses for future offline use
+        if (networkResponse && networkResponse.status === 200 && event.request.method === 'GET') {
+            const cache = await caches.open(cacheName);
+            cache.put(event.request, networkResponse.clone());
+        }
+        
+        return networkResponse;
+    } catch (error) {
+        // Network request failed (offline mode)
+        console.log('Network request failed, serving offline fallback:', event.request.url);
+        
+        // For navigation requests, serve index.html from cache
+        if (event.request.mode === 'navigate') {
+            const cache = await caches.open(cacheName);
+            const indexResponse = await cache.match('index.html');
+            if (indexResponse) {
+                return indexResponse;
+            }
+        }
+        
+        // Return a basic offline response for other failed requests
+        return new Response('Offline - resource not available', {
+            status: 503,
+            statusText: 'Service Unavailable',
+            headers: new Headers({
+                'Content-Type': 'text/plain'
+            })
+        });
+    }
 }
