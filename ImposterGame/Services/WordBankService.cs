@@ -124,6 +124,20 @@ public class WordBankService
             "Mamma Mia", "Dancing Queen", "ABBA", "Take a Chance on Me", "The Winner Takes It All",
             "Jersey Boys", "Frankie Valli", "Four Seasons", "Sherry", "Big Girls Don't Cry", "Can't Take My Eyes Off You",
             "Kinky Boots", "Charlie Price", "Lola", "Raise You Up", "Sex Is in the Heel", "Land of Lola"
+        },
+        ["Broadway Musical Shows"] = new()
+        {
+            "Hamilton", "Wicked", "The Phantom of the Opera", "The Lion King", "Les Misérables", "Chicago",
+            "Cats", "West Side Story", "The Sound of Music", "Fiddler on the Roof", "My Fair Lady", "Rent",
+            "A Chorus Line", "Avenue Q", "Dear Evan Hansen", "Come From Away", "The Book of Mormon",
+            "Mamma Mia!", "Jersey Boys", "Kinky Boots", "Hairspray", "The Producers", "Grease", "Annie",
+            "Oklahoma!", "South Pacific", "The King and I", "Guys and Dolls", "Cabaret", "Sweeney Todd",
+            "Into the Woods", "Sunday in the Park with George", "Company", "Follies", "A Little Night Music",
+            "Evita", "Jesus Christ Superstar", "Joseph and the Amazing Technicolor Dreamcoat", "Pippin",
+            "Godspell", "Hair", "The Rocky Horror Show", "Little Shop of Horrors", "Spring Awakening",
+            "Next to Normal", "Fun Home", "Hadestown", "Waitress", "Frozen", "Aladdin", "The Little Mermaid",
+            "Beauty and the Beast", "Newsies", "Matilda", "School of Rock", "Beetlejuice", "Mean Girls",
+            "Moulin Rouge!", "Six", "& Juliet"
         }
     };
 
