@@ -68,10 +68,19 @@ The published output will be in the `publish/wwwroot` directory, which contains 
 5. Give it a name and tap "Add"
 6. The app will appear on your home screen like a native app
 
+**✈️ Works in Airplane Mode**: Once installed and loaded, the app works completely offline with no network connection. All assets are cached indefinitely.
+
 ## PWA Features
 
-### Offline Support
-The service worker caches all necessary resources for offline functionality. Once loaded, the app works without an internet connection.
+### Full Offline Support
+The service worker implements a **cache-first strategy** with infinite cache duration:
+- All resources are cached on first load
+- App works completely offline, even in airplane mode
+- No network connection required after initial load
+- Cache persists indefinitely until manually cleared or updated
+- Gracefully handles network failures
+
+**For detailed information about offline functionality, see [OFFLINE-SUPPORT.md](./OFFLINE-SUPPORT.md)**
 
 ### iOS-Specific Optimizations
 - `apple-mobile-web-app-capable`: Enables standalone mode
