@@ -44,6 +44,16 @@ public class WordBankService
             "Softball", "Ultimate Frisbee", "Racquetball", "Squash", "Handball", "Water Polo", "Rowing",
             "Sailing", "Kayaking", "Rock Climbing", "Triathlon"
         },
+        ["Foods"] = new()
+        {
+            "Apple", "Apricot", "Avocado", "Banana", "Beef", "Blackberry", "Blueberry", "Broccoli",
+            "Burger", "Cabbage", "Carrot", "Cauliflower", "Cherry", "Chicken", "Corn", "Cucumber",
+            "Duck", "Eggplant", "Fish", "Grape", "Green Bean", "Ham", "Kale", "Lamb", "Lemon",
+            "Lettuce", "Lime", "Mango", "Melon", "Mushroom", "Mutton", "Onion", "Orange", "Papaya",
+            "Peach", "Pear", "Pepper", "Pineapple", "Plum", "Pork", "Potato", "Pumpkin", "Radish",
+            "Raspberry", "Salmon", "Spinach", "Squash", "Strawberry", "Tomato", "Tuna", "Turkey",
+            "Turnip", "Venison", "Watermelon", "Zucchini"
+        },
         ["Old Testament"] = new()
         {
             "Adam", "Eve", "Noah", "Abraham", "Isaac", "Jacob", "Joseph", "Moses", "Aaron", "Joshua",
