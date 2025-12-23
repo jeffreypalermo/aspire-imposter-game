@@ -156,13 +156,13 @@ public class WordBankService
             "Goodfellas", "Star Wars", "The Silence of the Lambs", "Saving Private Ryan", "Interstellar",
             "The Green Mile", "The Usual Suspects", "Spirited Away", "The Pianist", "Gladiator",
             "The Departed", "Jurassic Park", "Titanic", "Avatar", "The Avengers", "Black Panther",
-            "Toy Story", "Finding Nemo", "The Lion King", "Frozen", "Inside Out", "Coco",
+            "Toy Story", "Finding Nemo", "Inside Out", "Coco", "Up", "Ratatouille",
             "Home Alone", "Die Hard", "Back to the Future", "E.T.", "Jaws", "Indiana Jones",
             "The Prince of Egypt", "You've Got Mail", "Pride and Prejudice", "The Cutting Edge",
             "Tropic Thunder", "The Blind Side", "Rocky", "The Karate Kid", "Top Gun", "Maverick",
             "Cast Away", "The Terminal", "Catch Me If You Can", "The Pursuit of Happyness",
             "Good Will Hunting", "A Beautiful Mind", "Rain Man", "Dead Poets Society",
-            "The Breakfast Club", "Ferris Bueller's Day Off", "Clueless", "Mean Girls",
+            "The Breakfast Club", "Ferris Bueller's Day Off", "Clueless", "Sixteen Candles",
             "Legally Blonde", "The Devil Wears Prada", "When Harry Met Sally", "Sleepless in Seattle",
             "Notting Hill", "Love Actually", "The Notebook", "La La Land", "Casablanca"
         }
