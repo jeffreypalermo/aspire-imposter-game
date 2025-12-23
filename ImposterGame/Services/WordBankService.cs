@@ -159,7 +159,7 @@ public class WordBankService
             "Toy Story", "Finding Nemo", "Inside Out", "Coco", "Up", "Ratatouille",
             "Home Alone", "Die Hard", "Back to the Future", "E.T.", "Jaws", "Indiana Jones",
             "The Prince of Egypt", "You've Got Mail", "Pride and Prejudice", "The Cutting Edge",
-            "Tropic Thunder", "The Blind Side", "Rocky", "The Karate Kid", "Top Gun", "Maverick",
+            "Tropic Thunder", "The Blind Side", "Rocky", "The Karate Kid", "Top Gun", "Top Gun: Maverick",
             "Cast Away", "The Terminal", "Catch Me If You Can", "The Pursuit of Happyness",
             "Good Will Hunting", "A Beautiful Mind", "Rain Man", "Dead Poets Society",
             "The Breakfast Club", "Ferris Bueller's Day Off", "Clueless", "Sixteen Candles",
