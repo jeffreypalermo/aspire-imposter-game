@@ -148,6 +148,23 @@ public class WordBankService
             "Next to Normal", "Fun Home", "Hadestown", "Waitress", "Frozen", "Aladdin", "The Little Mermaid",
             "Beauty and the Beast", "Newsies", "Matilda", "School of Rock", "Beetlejuice", "Mean Girls",
             "Moulin Rouge!", "Six", "& Juliet"
+        },
+        ["Movies"] = new()
+        {
+            "The Shawshank Redemption", "The Godfather", "The Dark Knight", "Forrest Gump", "Pulp Fiction",
+            "Schindler's List", "The Lord of the Rings", "Fight Club", "Inception", "The Matrix",
+            "Goodfellas", "Star Wars", "The Silence of the Lambs", "Saving Private Ryan", "Interstellar",
+            "The Green Mile", "The Usual Suspects", "Spirited Away", "The Pianist", "Gladiator",
+            "The Departed", "Jurassic Park", "Titanic", "Avatar", "The Avengers", "Black Panther",
+            "Toy Story", "Finding Nemo", "The Lion King", "Frozen", "Inside Out", "Coco",
+            "Home Alone", "Die Hard", "Back to the Future", "E.T.", "Jaws", "Indiana Jones",
+            "The Prince of Egypt", "You've Got Mail", "Pride and Prejudice", "The Cutting Edge",
+            "Tropic Thunder", "The Blind Side", "Rocky", "The Karate Kid", "Top Gun", "Maverick",
+            "Cast Away", "The Terminal", "Catch Me If You Can", "The Pursuit of Happyness",
+            "Good Will Hunting", "A Beautiful Mind", "Rain Man", "Dead Poets Society",
+            "The Breakfast Club", "Ferris Bueller's Day Off", "Clueless", "Mean Girls",
+            "Legally Blonde", "The Devil Wears Prada", "When Harry Met Sally", "Sleepless in Seattle",
+            "Notting Hill", "Love Actually", "The Notebook", "La La Land", "Casablanca"
         }
     };
 
