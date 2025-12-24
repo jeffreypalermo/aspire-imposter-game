@@ -170,6 +170,12 @@ public class WordBankService
             "The Breakfast Club", "Ferris Bueller's Day Off", "Clueless", "Sixteen Candles",
             "Legally Blonde", "The Devil Wears Prada", "When Harry Met Sally", "Sleepless in Seattle",
             "Notting Hill", "Love Actually", "The Notebook", "La La Land", "Casablanca"
+        },
+        ["Xander"] = new()
+        {
+            "Trumpet", "Football", "Strong", "Handsome", "Poopie butthole", "Bronco", "Minecraft", 
+            "Video games", "Squishmallows", "Lego technic", "Robotics", "Warrior", "Weird Al Yankovic", 
+            "Hawg award", "Honor", "Roll", "Garfield", "Workout", "Weightlifting"
         }
     };
 
