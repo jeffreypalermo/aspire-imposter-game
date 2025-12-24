@@ -23,6 +23,11 @@ public class WordBankService
             "Hamster", "Guinea Pig", "Mouse", "Rat", "Squirrel", "Chipmunk", "Beaver", "Otter", "Seal",
             "Walrus", "Polar Bear", "Grizzly Bear", "Wolf", "Fox", "Deer", "Moose", "Elk"
         },
+        ["Annika"] = new()
+        {
+            "Dancing", "Sewing fashion", "Singing", "Beautiful", "Middle school", "Blonde", "Tennis",
+            "Legos", "Squishmallow", "Bass", "Clarinet", "Worship band"
+        },
         ["People"] = new()
         {
             "Teacher", "Doctor", "Nurse", "Engineer", "Architect", "Artist", "Musician", "Actor", "Director",
