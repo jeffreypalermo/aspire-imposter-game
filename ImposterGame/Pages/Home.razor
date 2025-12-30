@@ -14,9 +14,19 @@
                 <div class="form-group">
                     <label for="playerCount">Number of Players:</label>
                     <select id="playerCount" @bind="selectedPlayerCount" class="form-select">
-                        @for (int i = 2; i <= 10; i++)
+                        @for (int i = 2; i <= 13; i++)
                         {
                             <option value="@i">@i Players</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="imposterCount">Number of Impostors:</label>
+                    <select id="imposterCount" @bind="selectedImposterCount" class="form-select">
+                        @for (int i = 1; i <= 3; i++)
+                        {
+                            <option value="@i">@i Impostor@(i > 1 ? "s" : "")</option>
                         }
                     </select>
                 </div>
@@ -78,9 +88,10 @@
             <h2>🎮 Game in Progress</h2>
             <div class="game-info">
                 <p><strong>Players:</strong> @totalPlayers</p>
+                <p><strong>Impostors:</strong> @imposterPlayers.Count</p>
                 <p><strong>Theme:</strong> @selectedTheme</p>
-                <p class="instruction">Now discuss and try to find the imposter!</p>
-                <p class="instruction-small">The imposter doesn't know the secret word.</p>
+                <p class="instruction">Now discuss and try to find the imposter@(imposterPlayers.Count > 1 ? "s" : "")!</p>
+                <p class="instruction-small">The imposter@(imposterPlayers.Count > 1 ? "s don't" : " doesn't") know the secret word.</p>
             </div>
             <button @onclick="ResetGame" class="btn btn-reset">Start New Game</button>
         </div>
@@ -97,11 +108,12 @@
 
     private GameState gameState = GameState.Setup;
     private int selectedPlayerCount = 3;
+    private int selectedImposterCount = 1;
     private string selectedTheme = "Technology";
     private List<string> themes = new();
     private int currentPlayer = 1;
     private int totalPlayers = 0;
-    private int imposterPlayer = 0;
+    private List<int> imposterPlayers = new();
     private string secretWord = "";
     private bool showingWord = false;
 
@@ -121,9 +133,17 @@
         gameState = GameState.PlayerReveal;
         showingWord = false;
 
-        // Select random imposter
+        // Select random impostors
         var random = new Random();
-        imposterPlayer = random.Next(1, totalPlayers + 1);
+        imposterPlayers = new List<int>();
+        var availablePlayers = Enumerable.Range(1, totalPlayers).ToList();
+        
+        for (int i = 0; i < selectedImposterCount; i++)
+        {
+            int index = random.Next(availablePlayers.Count);
+            imposterPlayers.Add(availablePlayers[index]);
+            availablePlayers.RemoveAt(index);
+        }
 
         // Get secret word
         secretWord = WordBank.GetRandomWord(selectedTheme);
@@ -147,7 +167,7 @@
 
     private bool IsCurrentPlayerImposter()
     {
-        return currentPlayer == imposterPlayer;
+        return imposterPlayers.Contains(currentPlayer);
     }
 
     private string GetInstructionText()
@@ -171,7 +191,7 @@
         gameState = GameState.Setup;
         currentPlayer = 1;
         totalPlayers = 0;
-        imposterPlayer = 0;
+        imposterPlayers = new List<int>();
         secretWord = "";
         showingWord = false;
     }
