@@ -248,7 +248,7 @@
         currentPlayer = 1;
         showingCard = false;
 
-        var random = new Random();
+        var random = Random.Shared;
 
         // Load topic words and pick secret word
         words = TopicService.GetWords(selectedTopic);
