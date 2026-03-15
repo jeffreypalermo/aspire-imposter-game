@@ -1,0 +1,388 @@
+@page "/chameleon"
+@inject ChameleonTopicService TopicService
+
+<PageTitle>Annika's Chameleon</PageTitle>
+
+<div class="game-container">
+    @if (gameState == GameState.Setup)
+    {
+        <div class="setup-screen">
+            <h1 class="game-title">🦎 Annika's Chameleon</h1>
+            <p class="game-subtitle">One player is the Chameleon—they must fake it without knowing the secret word!</p>
+
+            <div class="setup-form">
+                <div class="form-group">
+                    <label for="playerCount">Number of Players:</label>
+                    <select id="playerCount" @bind="selectedPlayerCount" class="form-select">
+                        @for (int i = 3; i <= 8; i++)
+                        {
+                            <option value="@i">@i Players</option>
+                        }
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="topic">Topic:</label>
+                    <select id="topic" @bind="selectedTopic" class="form-select">
+                        @foreach (var topic in topics)
+                        {
+                            <option value="@topic">@topic</option>
+                        }
+                    </select>
+                </div>
+
+                @if (playerScores.Any())
+                {
+                    <div class="scoreboard">
+                        <h3>📊 Scores</h3>
+                        <div class="scores-grid">
+                            @foreach (var kvp in playerScores.OrderByDescending(s => s.Value))
+                            {
+                                <div class="score-row @(kvp.Value >= WinningScore ? "winner" : "")">
+                                    <span>Player @kvp.Key</span>
+                                    <span class="score-value">@kvp.Value pts</span>
+                                    @if (kvp.Value >= WinningScore)
+                                    {
+                                        <span>🏆</span>
+                                    }
+                                </div>
+                            }
+                        </div>
+                        <button @onclick="ResetScores" class="btn btn-small">Reset Scores</button>
+                    </div>
+                }
+
+                <button @onclick="StartGame" class="btn btn-start">Start Round</button>
+            </div>
+        </div>
+    }
+    else if (gameState == GameState.PlayerReveal)
+    {
+        <div class="reveal-screen">
+            <div class="player-info">
+                <h2>Player @currentPlayer of @totalPlayers</h2>
+                <p class="instruction">@GetInstructionText()</p>
+            </div>
+
+            @if (showingCard)
+            {
+                <div class="word-display">
+                    @if (IsCurrentPlayerChameleon())
+                    {
+                        <div class="chameleon-reveal">
+                            <h3>🦎 YOU ARE THE CHAMELEON! 🦎</h3>
+                            <p>You don't know the secret word. Try to blend in!</p>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="chameleon-word-reveal">
+                            <h3>Topic: @selectedTopic</h3>
+                            <p class="hint">The highlighted word is the secret word. Remember it!</p>
+                        </div>
+                    }
+
+                    <div class="topic-grid-container">
+                        <table class="topic-grid">
+                            <thead>
+                                <tr>
+                                    <th class="grid-header-corner"></th>
+                                    @for (int col = 0; col < 4; col++)
+                                    {
+                                        <th class="grid-col-header">@ColLabels[col]</th>
+                                    }
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @for (int row = 0; row < 4; row++)
+                                {
+                                    <tr>
+                                        <th class="grid-row-header">@RowLabels[row]</th>
+                                        @for (int col = 0; col < 4; col++)
+                                        {
+                                            int idx = row * 4 + col;
+                                            bool isSecret = !IsCurrentPlayerChameleon() && idx == secretWordIndex;
+                                            <td class="grid-cell @(isSecret ? "secret-cell" : "")">@words[idx]</td>
+                                        }
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    @if (!IsCurrentPlayerChameleon())
+                    {
+                        <div class="coordinate-hint">
+                            Secret word coordinate: <strong>@GetCoordinate(secretWordIndex)</strong>
+                        </div>
+                    }
+
+                    <button @onclick="HideCard" class="btn btn-primary btn-large">Done — Pass Device</button>
+                </div>
+            }
+            else
+            {
+                <button @onclick="ShowCard" class="btn btn-primary btn-large">Reveal My Role</button>
+            }
+        </div>
+    }
+    else if (gameState == GameState.Playing)
+    {
+        <div class="playing-screen">
+            <h2>🦎 Game in Progress</h2>
+            <div class="game-info">
+                <p><strong>Players:</strong> @totalPlayers</p>
+                <p><strong>Topic:</strong> @selectedTopic</p>
+                <p class="instruction">Take turns giving one-word clues related to the secret word.</p>
+                <p class="instruction-small">The Chameleon doesn't know the secret word — can they bluff their way through?</p>
+            </div>
+            <div class="action-buttons">
+                <button @onclick="GoToReveal" class="btn btn-reveal">Reveal Secret Word</button>
+                <button @onclick="ResetGame" class="btn btn-reset">New Game</button>
+            </div>
+        </div>
+    }
+    else if (gameState == GameState.Reveal)
+    {
+        <div class="playing-screen">
+            <h2>🔍 The Answer</h2>
+            <div class="game-info">
+                <p><strong>Topic:</strong> @selectedTopic</p>
+                <p>The secret word was:</p>
+                <div class="secret-word">@words[secretWordIndex]</div>
+                <p>The Chameleon was: <strong>Player @chameleonPlayer</strong></p>
+            </div>
+
+            @if (!scoringDone)
+            {
+                <div class="scoring-section">
+                    <h3>📊 Who won this round?</h3>
+                    @if (!chameleonCaught.HasValue)
+                    {
+                        <p>Did the group correctly identify the Chameleon?</p>
+                        <div class="action-buttons">
+                            <button @onclick="() => ChameleonWasCaught(true)" class="btn btn-primary">Yes, caught!</button>
+                            <button @onclick="() => ChameleonWasCaught(false)" class="btn btn-chameleon">No, escaped!</button>
+                        </div>
+                    }
+                    else if (chameleonCaught == true && !chameleonGuessedWord.HasValue)
+                    {
+                        <p>The Chameleon was caught! Did they guess the secret word?</p>
+                        <div class="action-buttons">
+                            <button @onclick="() => ChameleonGuessedWord(true)" class="btn btn-primary">Yes, guessed it!</button>
+                            <button @onclick="() => ChameleonGuessedWord(false)" class="btn btn-reset">No, wrong guess</button>
+                        </div>
+                    }
+                </div>
+            }
+            else
+            {
+                <div class="round-result">
+                    <p class="result-message">@roundResultMessage</p>
+                </div>
+            }
+
+            @if (playerScores.Any())
+            {
+                <div class="scoreboard">
+                    <h3>📊 Scores</h3>
+                    <div class="scores-grid">
+                        @foreach (var kvp in playerScores.OrderByDescending(s => s.Value))
+                        {
+                            <div class="score-row @(kvp.Value >= WinningScore ? "winner" : "")">
+                                <span>Player @kvp.Key</span>
+                                <span class="score-value">@kvp.Value pts</span>
+                                @if (kvp.Value >= WinningScore)
+                                {
+                                    <span>🏆</span>
+                                }
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+
+            <button @onclick="NextRound" class="btn btn-start">Next Round</button>
+        </div>
+    }
+</div>
+
+@code {
+    private const int WinningScore = 5;
+
+    private static readonly string[] RowLabels = ["A", "B", "C", "D"];
+    private static readonly string[] ColLabels = ["1", "2", "3", "4"];
+
+    private enum GameState { Setup, PlayerReveal, Playing, Reveal }
+
+    private GameState gameState = GameState.Setup;
+    private int selectedPlayerCount = 4;
+    private string selectedTopic = "";
+    private List<string> topics = new();
+    private int currentPlayer = 1;
+    private int totalPlayers = 0;
+    private int chameleonPlayer = 0;
+    private List<string> words = new();
+    private int secretWordIndex = 0;
+    private bool showingCard = false;
+
+    // Scoring
+    private Dictionary<int, int> playerScores = new();
+    private bool scoringDone = false;
+    private bool? chameleonCaught = null;
+    private bool? chameleonGuessedWord = null;
+    private string roundResultMessage = "";
+
+    protected override void OnInitialized()
+    {
+        topics = TopicService.GetTopics();
+        if (topics.Any())
+        {
+            selectedTopic = topics.First();
+        }
+    }
+
+    private void StartGame()
+    {
+        totalPlayers = selectedPlayerCount;
+        currentPlayer = 1;
+        showingCard = false;
+
+        var random = new Random();
+
+        // Load topic words and pick secret word
+        words = TopicService.GetWords(selectedTopic);
+        secretWordIndex = random.Next(16);
+
+        // Assign Chameleon randomly
+        chameleonPlayer = random.Next(1, totalPlayers + 1);
+
+        // Initialize scores for all players if not already done
+        for (int p = 1; p <= totalPlayers; p++)
+        {
+            if (!playerScores.ContainsKey(p))
+            {
+                playerScores[p] = 0;
+            }
+        }
+
+        // Reset round state
+        scoringDone = false;
+        chameleonCaught = null;
+        chameleonGuessedWord = null;
+        roundResultMessage = "";
+
+        gameState = GameState.PlayerReveal;
+    }
+
+    private void ShowCard()
+    {
+        showingCard = true;
+    }
+
+    private void HideCard()
+    {
+        showingCard = false;
+        currentPlayer++;
+
+        if (currentPlayer > totalPlayers)
+        {
+            gameState = GameState.Playing;
+        }
+    }
+
+    private bool IsCurrentPlayerChameleon() => currentPlayer == chameleonPlayer;
+
+    private string GetInstructionText()
+    {
+        if (!showingCard)
+        {
+            return currentPlayer == 1
+                ? "Pass the device to Player 1. Player 1, press the button when ready."
+                : $"Pass the device to Player {currentPlayer}. Player {currentPlayer}, press the button when ready.";
+        }
+        return "Look at your card, then press Done and pass the device.";
+    }
+
+    private string GetCoordinate(int index)
+    {
+        int row = index / 4;
+        int col = index % 4;
+        return $"{RowLabels[row]}{ColLabels[col]}";
+    }
+
+    private void GoToReveal()
+    {
+        gameState = GameState.Reveal;
+    }
+
+    private void ChameleonWasCaught(bool caught)
+    {
+        chameleonCaught = caught;
+        if (!caught)
+        {
+            // Chameleon escaped — give Chameleon 2 points
+            AwardPoints(chameleonPlayer, 2);
+            roundResultMessage = $"🦎 Player {chameleonPlayer} (the Chameleon) escaped! +2 points!";
+            scoringDone = true;
+        }
+    }
+
+    private void ChameleonGuessedWord(bool guessed)
+    {
+        chameleonGuessedWord = guessed;
+        if (guessed)
+        {
+            // Chameleon caught but guessed the word — Chameleon gets 1 point
+            AwardPoints(chameleonPlayer, 1);
+            roundResultMessage = $"🦎 Player {chameleonPlayer} (the Chameleon) was caught but guessed the word! +1 point!";
+        }
+        else
+        {
+            // Chameleon caught and wrong — everyone else gets 2 points
+            for (int p = 1; p <= totalPlayers; p++)
+            {
+                if (p != chameleonPlayer)
+                {
+                    AwardPoints(p, 2);
+                }
+            }
+            roundResultMessage = $"🎉 The group caught the Chameleon (Player {chameleonPlayer}) and they guessed wrong! +2 points to everyone else!";
+        }
+        scoringDone = true;
+    }
+
+    private void AwardPoints(int player, int points)
+    {
+        if (playerScores.ContainsKey(player))
+        {
+            playerScores[player] += points;
+        }
+    }
+
+    private void NextRound()
+    {
+        gameState = GameState.Setup;
+        currentPlayer = 1;
+        totalPlayers = 0;
+        chameleonPlayer = 0;
+        words = new();
+        secretWordIndex = 0;
+        showingCard = false;
+        scoringDone = false;
+        chameleonCaught = null;
+        chameleonGuessedWord = null;
+        roundResultMessage = "";
+    }
+
+    private void ResetGame()
+    {
+        NextRound();
+        playerScores = new();
+    }
+
+    private void ResetScores()
+    {
+        playerScores = new();
+    }
+}
