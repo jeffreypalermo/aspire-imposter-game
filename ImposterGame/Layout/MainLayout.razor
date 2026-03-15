@@ -1,5 +1,11 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page-content">
-    @Body
+<div class="app-wrapper">
+    <nav class="game-nav">
+        <NavLink href="/" Match="NavLinkMatch.All" class="nav-link">🎭 Imposter</NavLink>
+        <NavLink href="/chameleon" class="nav-link">🦎 Annika's Chameleon</NavLink>
+    </nav>
+    <div class="page-content">
+        @Body
+    </div>
 </div>
