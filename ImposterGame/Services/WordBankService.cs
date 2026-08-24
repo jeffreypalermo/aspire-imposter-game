@@ -23,6 +23,19 @@ public class WordBankService
             "Hamster", "Guinea Pig", "Mouse", "Rat", "Squirrel", "Chipmunk", "Beaver", "Otter", "Seal",
             "Walrus", "Polar Bear", "Grizzly Bear", "Wolf", "Fox", "Deer", "Moose", "Elk"
         },
+        ["Bible"] = new()
+        {
+            "Adam", "Eve", "Cain", "Abel", "Noah", "Abraham", "Sarah", "Isaac", "Rebekah", "Jacob",
+            "Esau", "Rachel", "Leah", "Joseph", "Moses", "Aaron", "Miriam", "Pharaoh", "Joshua",
+            "Caleb", "Rahab", "Deborah", "Gideon", "Samson", "Delilah", "Ruth", "Naomi", "Boaz",
+            "Samuel", "Saul", "Jesse", "David", "Goliath", "Jonathan", "Solomon", "Elijah", "Elisha",
+            "Naaman", "Isaiah", "Jeremiah", "Ezekiel", "Daniel", "Shadrach", "Meshach", "Abednego",
+            "Nebuchadnezzar", "Esther", "Mordecai", "Haman", "Nehemiah", "Ezra", "Jonah", "Job",
+            "Mary", "Joseph of Nazareth", "Jesus", "John the Baptist", "Elizabeth", "Peter", "Andrew",
+            "James", "John", "Philip", "Thomas", "Matthew", "Judas Iscariot", "Mary Magdalene",
+            "Martha", "Lazarus", "Zacchaeus", "Nicodemus", "Pontius Pilate", "Herod", "Paul",
+            "Barnabas", "Silas", "Timothy", "Stephen", "Lydia", "Priscilla", "Aquila", "Cornelius"
+        },
         ["Annika"] = new()
         {
             "Dancing", "Sewing fashion", "Singing", "Beautiful", "Middle school", "Blonde", "Tennis",
