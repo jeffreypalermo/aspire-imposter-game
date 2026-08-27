@@ -186,9 +186,119 @@ public class WordBankService
         },
         ["Xander"] = new()
         {
-            "Trumpet", "Football", "Strong", "Handsome", "Poopie butthole", "Bronco", "Minecraft", 
-            "Video games", "Squishmallows", "Lego technic", "Robotics", "Warrior", "Weird Al Yankovic", 
+            "Trumpet", "Football", "Strong", "Handsome", "Poopie butthole", "Bronco", "Minecraft",
+            "Video games", "Squishmallows", "Lego technic", "Robotics", "Warrior", "Weird Al Yankovic",
             "Hawg award", "Honor", "Roll", "Garfield", "Workout", "Weightlifting"
+        },
+        ["Locations"] = new()
+        {
+            "Airplane", "Bank", "Beach", "Casino", "Cathedral", "Circus Tent", "Corporate Party",
+            "Crusader Army", "Day Spa", "Embassy", "Hospital", "Hotel", "Military Base", "Movie Studio",
+            "Cruise Ship", "Passenger Train", "Pirate Ship", "Polar Station", "Police Station",
+            "Restaurant", "School", "Service Station", "Space Station", "Submarine", "Supermarket",
+            "Theater", "University", "Amusement Park", "Art Museum", "Candy Factory", "Cemetery",
+            "Coal Mine", "Construction Site", "Gaming Convention", "Gas Station", "Harbor Docks",
+            "Ice Hockey Stadium", "Jail", "Jazz Club", "Library", "Night Club", "Race Track",
+            "Retirement Home", "Rock Concert", "Sightseeing Bus", "Stadium", "Subway", "The U.N.",
+            "Vineyard", "Wedding", "Zoo", "Airport", "Farm", "Fire Station", "Lighthouse"
+        },
+        ["Countries"] = new()
+        {
+            "United States", "Canada", "Mexico", "Brazil", "Argentina", "United Kingdom", "France",
+            "Germany", "Italy", "Spain", "Portugal", "Netherlands", "Belgium", "Switzerland", "Austria",
+            "Greece", "Norway", "Sweden", "Finland", "Denmark", "Iceland", "Ireland", "Poland",
+            "Russia", "Ukraine", "Turkey", "Egypt", "Morocco", "South Africa", "Kenya", "Nigeria",
+            "Ethiopia", "India", "China", "Japan", "South Korea", "Thailand", "Vietnam", "Philippines",
+            "Indonesia", "Malaysia", "Singapore", "Australia", "New Zealand", "Israel", "Saudi Arabia",
+            "United Arab Emirates", "Peru", "Chile", "Colombia", "Cuba", "Jamaica", "Costa Rica", "Panama"
+        },
+        ["Household Items"] = new()
+        {
+            "Refrigerator", "Microwave", "Toaster", "Blender", "Coffee Maker", "Dishwasher", "Oven",
+            "Vacuum Cleaner", "Washing Machine", "Dryer", "Iron", "Ironing Board", "Broom", "Mop",
+            "Dustpan", "Trash Can", "Couch", "Recliner", "Coffee Table", "Bookshelf", "Lamp",
+            "Television", "Remote Control", "Curtains", "Blinds", "Rug", "Pillow", "Blanket",
+            "Mattress", "Nightstand", "Dresser", "Mirror", "Alarm Clock", "Hair Dryer", "Toothbrush",
+            "Towel", "Shower Curtain", "Plunger", "Scissors", "Stapler", "Flashlight", "Batteries",
+            "Ladder", "Toolbox", "Hammer", "Screwdriver", "Extension Cord", "Light Bulb", "Candle",
+            "Picture Frame", "Vase", "Doormat", "Umbrella", "Keys"
+        },
+        ["Superheroes"] = new()
+        {
+            "Superman", "Batman", "Wonder Woman", "Spider-Man", "Iron Man", "Captain America", "Thor",
+            "Hulk", "Black Widow", "Hawkeye", "Black Panther", "Doctor Strange", "Scarlet Witch",
+            "Vision", "Ant-Man", "Wasp", "Captain Marvel", "Star-Lord", "Gamora", "Groot", "Rocket",
+            "Drax", "Wolverine", "Cyclops", "Storm", "Jean Grey", "Professor X", "Magneto", "Deadpool",
+            "Daredevil", "Punisher", "Ghost Rider", "Green Lantern", "The Flash", "Aquaman", "Cyborg",
+            "Green Arrow", "Supergirl", "Batgirl", "Robin", "Nightwing", "Shazam", "Blue Beetle",
+            "Martian Manhunter", "Silver Surfer", "Mr. Fantastic", "Invisible Woman", "Human Torch",
+            "The Thing", "Falcon", "Winter Soldier", "War Machine", "Spider-Gwen", "Miles Morales"
+        },
+        ["Video Games"] = new()
+        {
+            "Minecraft", "Fortnite", "Roblox", "Among Us", "Mario Kart", "Super Mario Bros", "Zelda",
+            "Pokemon", "Tetris", "Pac-Man", "Sonic the Hedgehog", "Halo", "Call of Duty", "Overwatch",
+            "League of Legends", "World of Warcraft", "The Sims", "Animal Crossing", "Rocket League",
+            "Fall Guys", "Apex Legends", "Valorant", "Counter-Strike", "Grand Theft Auto", "Red Dead Redemption",
+            "Skyrim", "Elden Ring", "Dark Souls", "God of War", "The Last of Us", "Uncharted",
+            "Assassin's Creed", "Far Cry", "Doom", "Portal", "Half-Life", "Street Fighter", "Mortal Kombat",
+            "Super Smash Bros", "Kirby", "Donkey Kong", "Metroid", "Splatoon", "Stardew Valley",
+            "Terraria", "Subnautica", "Hollow Knight", "Cuphead", "Undertale", "FIFA", "Madden NFL",
+            "NBA 2K", "Candy Crush", "Angry Birds"
+        },
+        ["Disney"] = new()
+        {
+            "Mickey Mouse", "Minnie Mouse", "Donald Duck", "Goofy", "Pluto", "Cinderella", "Snow White",
+            "Sleeping Beauty", "Ariel", "Belle", "Jasmine", "Pocahontas", "Mulan", "Tiana", "Rapunzel",
+            "Merida", "Moana", "Elsa", "Anna", "Olaf", "Kristoff", "Simba", "Nala", "Mufasa", "Scar",
+            "Timon", "Pumbaa", "Aladdin", "Genie", "Jafar", "Abu", "Beast", "Gaston", "Lumiere",
+            "Mrs. Potts", "Maleficent", "Ursula", "Cruella de Vil", "Captain Hook", "Peter Pan",
+            "Tinker Bell", "Wendy", "Pinocchio", "Jiminy Cricket", "Dumbo", "Bambi", "Stitch", "Lilo",
+            "Woody", "Buzz Lightyear", "Jessie", "Nemo", "Dory", "Lightning McQueen", "Mater"
+        },
+        ["Desserts"] = new()
+        {
+            "Chocolate Cake", "Cheesecake", "Apple Pie", "Pumpkin Pie", "Pecan Pie", "Key Lime Pie",
+            "Brownie", "Chocolate Chip Cookie", "Sugar Cookie", "Oatmeal Cookie", "Snickerdoodle",
+            "Cupcake", "Donut", "Eclair", "Cream Puff", "Cannoli", "Tiramisu", "Ice Cream", "Gelato",
+            "Sorbet", "Milkshake", "Sundae", "Banana Split", "Root Beer Float", "Cotton Candy",
+            "Funnel Cake", "Churro", "Macaron", "Macaroon", "Baklava", "Creme Brulee", "Flan",
+            "Pudding", "Jello", "Fudge", "Toffee", "Caramel", "Candy Apple", "Gingerbread",
+            "Cinnamon Roll", "Danish", "Croissant", "Muffin", "Scone", "Waffle", "Pancakes",
+            "Crepe", "S'mores", "Rice Krispie Treat", "Popsicle", "Frozen Yogurt", "Trifle", "Parfait"
+        },
+        ["Fast Food"] = new()
+        {
+            "McDonald's", "Burger King", "Wendy's", "Chick-fil-A", "Popeyes", "KFC", "Taco Bell",
+            "Chipotle", "Subway", "Jimmy John's", "Jersey Mike's", "Firehouse Subs", "Panera Bread",
+            "Panda Express", "Pizza Hut", "Domino's", "Papa John's", "Little Caesars", "Five Guys",
+            "In-N-Out", "Shake Shack", "Whataburger", "Culver's", "Sonic", "Dairy Queen", "Arby's",
+            "Jack in the Box", "Carl's Jr", "Hardee's", "White Castle", "Raising Cane's", "Zaxby's",
+            "Bojangles", "Del Taco", "Qdoba", "Starbucks", "Dunkin'", "Krispy Kreme", "Tim Hortons",
+            "Baskin-Robbins", "Cold Stone Creamery", "Smoothie King", "Jamba Juice", "Wingstop",
+            "Buffalo Wild Wings", "Long John Silver's", "Checkers", "Steak 'n Shake", "Waffle House", "IHOP"
+        },
+        ["Musical Instruments"] = new()
+        {
+            "Piano", "Guitar", "Electric Guitar", "Bass Guitar", "Violin", "Viola", "Cello",
+            "Double Bass", "Harp", "Flute", "Piccolo", "Clarinet", "Oboe", "Bassoon", "Saxophone",
+            "Trumpet", "Trombone", "French Horn", "Tuba", "Drums", "Snare Drum", "Bass Drum",
+            "Cymbals", "Timpani", "Xylophone", "Marimba", "Vibraphone", "Glockenspiel", "Triangle",
+            "Tambourine", "Maracas", "Bongos", "Congas", "Djembe", "Banjo", "Mandolin", "Ukulele",
+            "Accordion", "Harmonica", "Bagpipes", "Organ", "Keyboard", "Synthesizer", "Recorder",
+            "Kazoo", "Cowbell", "Castanets", "Sitar", "Didgeridoo", "Steel Drum", "Fiddle", "Lyre"
+        },
+        ["Holidays"] = new()
+        {
+            "Christmas", "Easter", "Thanksgiving", "Halloween", "New Year's Eve", "New Year's Day",
+            "Valentine's Day", "St. Patrick's Day", "Fourth of July", "Memorial Day", "Labor Day",
+            "Veterans Day", "Mother's Day", "Father's Day", "Groundhog Day", "April Fools' Day",
+            "Cinco de Mayo", "Mardi Gras", "Hanukkah", "Kwanzaa", "Presidents' Day", "MLK Day",
+            "Columbus Day", "Flag Day", "Earth Day", "Arbor Day", "Palm Sunday", "Good Friday",
+            "Ash Wednesday", "Advent", "Epiphany", "Pentecost", "Boxing Day", "Juneteenth",
+            "Grandparents Day", "Leap Day", "Chinese New Year", "Diwali", "Oktoberfest", "Day of the Dead",
+            "Santa Claus", "Easter Bunny", "Fireworks", "Turkey Dinner", "Trick or Treat", "Mistletoe",
+            "Christmas Tree", "Stocking", "Pumpkin Carving", "Egg Hunt", "Parade", "Countdown"
         }
     };
 
